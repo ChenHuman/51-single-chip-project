@@ -40,9 +40,6 @@ unsigned char which=0;
 unsigned char num=10,num1=20;
 
 unsigned char timer3,t2; 
-
-
-
 unsigned int time=0;
 unsigned long S=0;
 
@@ -224,7 +221,6 @@ void main()
 	}
 }
 
-
 void timer2() interrupt 5
 {
 	if(mode==1||mode==2)
@@ -254,8 +250,6 @@ void timer2() interrupt 5
 	
 	TF2=0;
 }
-
-
 
 //驱动小车
 void lanya()
@@ -313,11 +307,6 @@ void uart()interrupt 4
 	TI=0;
 }
 
-
-
-
-
-
 void hong()
 {
 	if(YOU==0&&ZUO==0)
@@ -329,25 +318,6 @@ void hong()
 	if(YOU==1&&ZUO==1)
 		which=4;   	 
 }  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void chaoshengbo()
 {
@@ -411,10 +381,6 @@ void chaoshengbo()
 		} 	
 }
 
-
-
-
-
 void Time1Config()
 {
 	T2CON=0x00;
@@ -435,8 +401,6 @@ void Time1Config()
 	TL0=0;          
 	ET0=1;             //允许T0中断		
 }
-
-
 
 void Conut()
 {
