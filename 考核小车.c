@@ -1,4 +1,4 @@
-// 15Í¨ĞÅ ³ÂÏşÃ÷ 51µ¥Æ¬»úĞ¡³µÏîÄ¿
+// 15é€šä¿¡ é™ˆæ™“æ˜ 51å•ç‰‡æœºå°è½¦é¡¹ç›®
 #include <reg52.h>
 #include<intrins.h>
 #define uint unsigned int 
@@ -11,7 +11,7 @@
 
 uchar mode=0;
 
-//¶¨ÒåÁ½¸öµç»úµÄ½Ó¿Ú
+//å®šä¹‰ä¸¤ä¸ªç”µæœºçš„æ¥å£
 sbit IA1=P1^5;	  
 sbit IB1=P1^6;
 
@@ -28,10 +28,10 @@ sbit hongwai_key=P3^4;
 sbit lanya_key=P3^5;
 sbit chaoshengbo_key=P3^6;
 
-uchar pwn1=30;   	//ÓÒÂÖµ÷ËÙ±êÖ¾
-uchar pwn2=30;		//×óÂÖµ÷ËÙ±êÖ¾
-uchar cycle;		//¶¨ÒåÒ»¸öÂö³åÖÜÆÚ
-uchar temp;			//´æ´¢À¶ÑÀ·¢ËÍĞÅÏ¢Öµ
+uchar pwn1=30;   	//å³è½®è°ƒé€Ÿæ ‡å¿—
+uchar pwn2=30;		//å·¦è½®è°ƒé€Ÿæ ‡å¿—
+uchar cycle;		//å®šä¹‰ä¸€ä¸ªè„‰å†²å‘¨æœŸ
+uchar temp;			//å­˜å‚¨è“ç‰™å‘é€ä¿¡æ¯å€¼
 
 uchar go_back_flag;
 
@@ -45,18 +45,13 @@ unsigned long S=0;
 
 uint t_keyscan;
 uint f,ff,fff;
+
 void chaoshengbo();
-
 void Time1Config();
-
 void StartModule();
-
 void Conut();
-
 void hong();
-
 void blueteeth();
-
 void lanya();
 void init();
 void hongwai();	
@@ -126,7 +121,7 @@ void keyscan()
 	}	
 }
 
-//³õÊ¼»¯´®¿Ú¡¢¶¨Ê±Æ÷
+//åˆå§‹åŒ–ä¸²å£ã€å®šæ—¶å™¨
 void init()
 {
 	TMOD=0x21;			  
@@ -251,23 +246,23 @@ void timer2() interrupt 5
 	TF2=0;
 }
 
-//Çı¶¯Ğ¡³µ
+//é©±åŠ¨å°è½¦
 void lanya()
 {
-	if(cycle>200)		  //Í¬Ò»¸öÂö³åÖÜÆÚ
+	if(cycle>200)		  //åŒä¸€ä¸ªè„‰å†²å‘¨æœŸ
 	{
 		cycle=0;
 	}
-	if(cycle<pwn1)		  //ÓÒÂÖ
+	if(cycle<pwn1)		  //å³è½®
 	{
 		switch(temp)
 		{
-		case 0x38:	IA1=1;	IB1=0;	pwn1=fast1;	go_back_flag=1;		break;	  //Õı³£ËÙ¶ÈÇ°½ø
-		case 0x34:	if(go_back_flag) {IA1=1;IB1=0;} else {IA1=0;IB1=1;}	pwn1=fast1;	break;	  //×ó×ª£¬×óÂÖËÙ¶Èµ÷Ğ¡
-		case 0x36:	if(go_back_flag) {IA1=1;IB1=0;} else {IA1=0;IB1=1;}	pwn1=slow1;	break;	  //ÓÒ×ª£¬ÓÒÂÖËÙ¶Èµ÷Ğ¡
-		case 0x32:	IA1=0;	IB1=1;	pwn1=fast1;	go_back_flag=0;		break;	  //Õı³£ËÙ¶ÈºóÍË
-		case 0x37:	IA1=1;	IB1=0;	pwn1+=10; 	if(pwn1>95) pwn1=fast1;	break;	//¼ÓËÙ
-		case 0x39:	IA1=0;	IB1=0;	pwn1=fast1;	break;	  //É²³µ
+		case 0x38:	IA1=1;	IB1=0;	pwn1=fast1;	go_back_flag=1;		break;	  //æ­£å¸¸é€Ÿåº¦å‰è¿›
+		case 0x34:	if(go_back_flag) {IA1=1;IB1=0;} else {IA1=0;IB1=1;}	pwn1=fast1;	break;	  //å·¦è½¬ï¼Œå·¦è½®é€Ÿåº¦è°ƒå°
+		case 0x36:	if(go_back_flag) {IA1=1;IB1=0;} else {IA1=0;IB1=1;}	pwn1=slow1;	break;	  //å³è½¬ï¼Œå³è½®é€Ÿåº¦è°ƒå°
+		case 0x32:	IA1=0;	IB1=1;	pwn1=fast1;	go_back_flag=0;		break;	  //æ­£å¸¸é€Ÿåº¦åé€€
+		case 0x37:	IA1=1;	IB1=0;	pwn1+=10; 	if(pwn1>95) pwn1=fast1;	break;	//åŠ é€Ÿ
+		case 0x39:	IA1=0;	IB1=0;	pwn1=fast1;	break;	  //åˆ¹è½¦
 		case 0x00:  IA1=0;	IB1=0;	pwn1=fast1;    break;
 		}	
 	}
@@ -276,16 +271,16 @@ void lanya()
 		IA1=0;
 		IB1=0;
 	}
-	if(cycle<pwn2)		   //×óÂÖ
+	if(cycle<pwn2)		   //å·¦è½®
 	{
 		switch(temp)
 		{
-		case 0x38:	IA2=1;	IB2=0;	pwn2=fast2;	go_back_flag=1;		break;	  //Õı³£ËÙ¶ÈÇ°½ø
-		case 0x34:	if(go_back_flag) {IA2=1;IB2=0;} else {IA2=0;IB2=1;}	pwn2=slow2;	break;	  //×ó×ª£¬×óÂÖËÙ¶Èµ÷Ğ¡
-		case 0x36:	if(go_back_flag) {IA2=1;IB2=0;} else {IA2=0;IB2=1;}	pwn2=fast2;	break;	  //ÓÒ×ª£¬ÓÒÂÖËÙ¶Èµ÷Ğ¡
-		case 0x32:	IA2=0;	IB2=1;	pwn2=fast2;	go_back_flag=0;		break;	  //Õı³£ËÙ¶ÈºóÍË
-		case 0x37:	IA2=1;	IB2=0;	pwn2+=10;	if(pwn2>95) pwn2=fast2;	break;	 //¼ÓËÙ
-		case 0x39:	IA2=0;	IB2=0;	pwn2=fast2;	break;	  //É²³µ
+		case 0x38:	IA2=1;	IB2=0;	pwn2=fast2;	go_back_flag=1;		break;	  //æ­£å¸¸é€Ÿåº¦å‰è¿›
+		case 0x34:	if(go_back_flag) {IA2=1;IB2=0;} else {IA2=0;IB2=1;}	pwn2=slow2;	break;	  //å·¦è½¬ï¼Œå·¦è½®é€Ÿåº¦è°ƒå°
+		case 0x36:	if(go_back_flag) {IA2=1;IB2=0;} else {IA2=0;IB2=1;}	pwn2=fast2;	break;	  //å³è½¬ï¼Œå³è½®é€Ÿåº¦è°ƒå°
+		case 0x32:	IA2=0;	IB2=1;	pwn2=fast2;	go_back_flag=0;		break;	  //æ­£å¸¸é€Ÿåº¦åé€€
+		case 0x37:	IA2=1;	IB2=0;	pwn2+=10;	if(pwn2>95) pwn2=fast2;	break;	 //åŠ é€Ÿ
+		case 0x39:	IA2=0;	IB2=0;	pwn2=fast2;	break;	  //åˆ¹è½¦
 		case 0x00:  IA2=0;	IB2=0;	pwn2=fast2;    break;
 		}
 	}
@@ -296,7 +291,7 @@ void lanya()
 	}
 }
 
-//´®¿ÚÍ¨ĞÅ
+//ä¸²å£é€šä¿¡
 void uart()interrupt 4
 {
 	while(RI==0);
@@ -324,10 +319,10 @@ void chaoshengbo()
 	if(t2==50)
 		{
 			StartModule();
-			while(!Echo);		//µ±RXÎªÁãÊ±µÈ´ı
-			TR0=1;			    //¿ªÆô¼ÆÊı
-			while(Echo);			//µ±RXÎª1¼ÆÊı²¢µÈ´ı
-			TR0=0;				//¹Ø±Õ¼ÆÊı
+			while(!Echo);		//å½“RXä¸ºé›¶æ—¶ç­‰å¾…
+			TR0=1;			    //å¼€å¯è®¡æ•°
+			while(Echo);			//å½“RXä¸º1è®¡æ•°å¹¶ç­‰å¾…
+			TR0=0;				//å…³é—­è®¡æ•°
 			Conut();
 			t2=0;
 		}			
@@ -399,7 +394,7 @@ void Time1Config()
 
 	TH0=0;
 	TL0=0;          
-	ET0=1;             //ÔÊĞíT0ÖĞ¶Ï		
+	ET0=1;             //å…è®¸T0ä¸­æ–­		
 }
 
 void Conut()
@@ -408,8 +403,8 @@ void Conut()
 	TH0=0;
 	TL0=0;
 	
-	S=(time*1.7)/100;     //Ëã³öÀ´ÊÇCM
-	if(S<=17) //³¬³ö²âÁ¿·¶Î§ÏÔÊ¾¡°-¡±
+	S=(time*1.7)/100;     //ç®—å‡ºæ¥æ˜¯CM
+	if(S<=17) //è¶…å‡ºæµ‹é‡èŒƒå›´æ˜¾ç¤ºâ€œ-â€
 	{	 
 		f++;
 		if(f>3)
@@ -451,14 +446,14 @@ void Conut()
 	}
 }
 
-void zd0() interrupt 1 		 //T0ÖĞ¶ÏÓÃÀ´¼ÆÊıÆ÷Òç³ö,³¬¹ı²â¾à·¶Î§
+void zd0() interrupt 1 		 //T0ä¸­æ–­ç”¨æ¥è®¡æ•°å™¨æº¢å‡º,è¶…è¿‡æµ‹è·èŒƒå›´
 {
-						 //ÖĞ¶ÏÒç³ö±êÖ¾
+						 //ä¸­æ–­æº¢å‡ºæ ‡å¿—
 }
 
-void  StartModule() 		         //Æô¶¯Ä£¿é
+void  StartModule() 		         //å¯åŠ¨æ¨¡å—
 {
-	Trig=1;			                     //Æô¶¯Ò»´ÎÄ£¿é
+	Trig=1;			                     //å¯åŠ¨ä¸€æ¬¡æ¨¡å—
 	_nop_(); 
 	_nop_(); 
 	_nop_(); 
