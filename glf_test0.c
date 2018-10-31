@@ -4,7 +4,6 @@
 #define uint unsigned int
 #define uchar unsigned char
 
-
 sbit LE0 = P2^0;
 sbit LE1 = P2^1;
 sbit LE2 = P2^2;
@@ -22,8 +21,6 @@ int count1 = 0;
 int count2 = 0;
 int count3 = 0;
 int count4 = 0;
-
-
 
 void init_led();
 void init_timer0();
@@ -520,7 +517,5 @@ void main()
 			default:   break;
 		}		 
 		//task_led1();
-		
-
 	}
 }
