@@ -6,4 +6,4 @@
   - :diamond_shape_with_a_dot_inside:蓝色音乐光立方
 - 大一C语言小项目
   - :snake:贪吃蛇
-  - :large_blue_diamond:俄罗斯方块
+  - :bento:俄罗斯方块
