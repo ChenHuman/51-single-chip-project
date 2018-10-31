@@ -6,3 +6,5 @@
 - 大一C语言小项目
   - :snake:贪吃蛇
   - :large_blue_diamond:俄罗斯方块
+- 部分运行界面
+  - 
